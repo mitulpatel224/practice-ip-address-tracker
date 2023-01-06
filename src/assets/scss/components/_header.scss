@@ -1,21 +1,58 @@
+$ctrl-height: 50px;
 header {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  background-image: url("./../../images/pattern-bg.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  height: 250px;
   .header-text {
     margin: 20px auto 20px auto;
     color: #ffffff;
   }
-  .form-group {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    .btn {
-      height: 100%;
-      span {
-        height: 100%;
-        background-image: url("../../images/icon-arrow.svg");
-        background-position: center center;
-        background-repeat: no-repeat;
+  form {
+    width: fit-content;
+    .form-group {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      align-content: center;
+      width: 350px;
+      .form-control {
+        height: $ctrl-height;
+        border: 1px solid;
+        text-overflow: ellipsis;
+        cursor: pointer;
+        &.form-control-invalid {
+          border: 1px solid #ef0000;
+        }
       }
+      .btn {
+        border: 0;
+        padding: 0;
+        margin: 0;
+        height: $ctrl-height;
+        width: $ctrl-height;
+        border-radius: 0 10px 10px 0;
+        overflow: hidden;
+        cursor: pointer;
+        span {
+          display: inline-block;
+          height: $ctrl-height;
+          width: 100%;
+          background-image: url("../../images/icon-arrow.svg");
+          background-position: center center;
+          background-repeat: no-repeat;
+        }
+      }
+    }
+    .form-control-error {
+      color: #ef0000;
     }
   }
 }
