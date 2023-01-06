@@ -1,0 +1,21 @@
+header {
+  text-align: center;
+  .header-text {
+    margin: 20px auto 20px auto;
+    color: #ffffff;
+  }
+  .form-group {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    .btn {
+      height: 100%;
+      span {
+        height: 100%;
+        background-image: url("../../images/icon-arrow.svg");
+        background-position: center center;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+}

@@ -3,7 +3,7 @@ import React from "react";
 function Header() {
   return (
     <header>
-      <h2>IP Address Tracker</h2>
+      <h2 className="header-text">IP Address Tracker</h2>
       <div className="form-group">
         <input
           type="text"
