@@ -1,6 +1,7 @@
 {
   "name": "ip-address-tracker-app",
-  "version": "0.1.0",
+  "version": "1.0.1",
+  "homepage": "/practice-ip-address-tracker/",
   "private": true,
   "dependencies": {
     "@googlemaps/react-wrapper": "^1.1.35",

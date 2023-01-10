@@ -19,6 +19,7 @@ function MapView({ addMarker }) {
   useEffect(() => {
     if ((addMarker, map)) {
       const { lat, lng } = addMarker;
+      if (marker) marker.remove();
       marker = L.marker([lat, lng], { icon: markerIcon }).addTo(map);
       map.flyTo([lat, lng], 15);
     }
