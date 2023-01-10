@@ -3,8 +3,8 @@
   position: absolute;
   top: -100px;
   background: white;
-  left: 20px;
-  right: 20px;
+  left: 10%;
+  right: 10%;
   top: 150px;
   z-index: 2;
   border-radius: 10px;
@@ -31,12 +31,20 @@
     justify-content: space-between;
     .card-content {
       flex-grow: 1;
-      margin-left: 30px;
+      margin-left: 10px;
       text-align: left;
       border-right: 1px solid gray;
     }
     :last-child {
       border: none;
+    }
+  }
+}
+
+@media (min-width:1440px){
+  .card-wrapper{
+    .card-content{
+      margin-left: 30px;
     }
   }
 }
