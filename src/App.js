@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.scss";
 // import Footer from "./Components/Footer";
 import Header from "./Components/Header";
@@ -12,6 +12,12 @@ function App() {
       fetchIpAddressDetail(ip);
     }
   };
+
+  useEffect(() => {
+    fetchIpAddressDetail("");
+
+    return () => {};
+  }, []);
 
   /**
    * Fetch location details using geo-ipify API call
