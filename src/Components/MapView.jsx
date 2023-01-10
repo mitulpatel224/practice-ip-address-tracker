@@ -1,14 +1,26 @@
 import React, { useEffect } from "react";
 
+let map;
+let marker;
+
 /**
  * Map layout component
  * @returns Map layout
  */
-function MapView() {
+function MapView({ addMarker }) {
   /** Extract Leaflet object */
   const { L } = window;
 
-  let map;
+  useEffect(() => {
+    if ((addMarker, map)) {
+      const { lat, lng } = addMarker;
+      console.log(addMarker);
+      marker = L.marker([lat, lng]).addTo(map);
+      console.log(marker);
+      map.setView([lat, lng], 13);
+    }
+    return () => {};
+  }, [addMarker]);
 
   useEffect(() => {
     // create map view

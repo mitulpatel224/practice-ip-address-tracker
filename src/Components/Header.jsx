@@ -1,54 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-function Header() {
+function Header({ onIpSubmit }) {
   const [form, setForm] = useState({
     ipAddress: "",
   });
-  const [ipAddressError, setipAddressError] = useState(false);
+  const [ipAddressError, setIpAddressError] = useState(false);
 
   const handleUserInput = (e) => {
     const value = e.target.value;
     setForm({ ipAddress: value });
   };
 
-  const validateForm = () => {
+  const validateForm = async () => {
     const ipAddressValid = form.ipAddress.match(
       /^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/
     );
     return ipAddressValid ? "" : "Invalid IP Address!";
   };
 
-  const submitForm = (event) => {
-    setipAddressError(validateForm());
+  const submitForm = async (event) => {
     event.preventDefault();
-    if (!ipAddressError) {
-      fetchIpAddressDetail(form.ipAddress);
-    }
-  };
-
-  /**
-   * Fetch location details using geo-ipify API call
-   * @param {ip} ip ip address
-   */
-  const fetchIpAddressDetail = (ip) => {
-    fetch(
-      `https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.REACT_APP_IP_API_KEY}&ipAddress=${ip}`,
-      { method: "GET" }
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        const { code, messages, location } = data;
-        if (code) alert(`Code: ${code}\n${messages}`);
-        else {
-          console.log(location);
-        }
-      });
+    validateForm().then((data) => {
+      setIpAddressError(data);
+      if (!data) {
+        onIpSubmit(form.ipAddress);
+      }
+    });
   };
 
   return (
     <header>
       <h2 className="header-text">IP Address Tracker</h2>
-      <form>
+      <form onSubmit={submitForm}>
         <div className="form-group">
           <input
             type="text"
@@ -63,7 +46,7 @@ function Header() {
           <button
             className="btn btn-primary"
             type="submit"
-            onClick={(e) => submitForm(e)}
+            // onClick={(e) => submitForm(e)}
           >
             <span className="icon-arrow-right"></span>
           </button>
