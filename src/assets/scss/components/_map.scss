@@ -1,0 +1,8 @@
+@import "https://unpkg.com/leaflet@1.9.3/dist/leaflet.css";
+
+#map {
+  flex-grow: 1;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
