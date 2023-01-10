@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-
+import iconMarker from "../assets/images/icon-location.svg";
 let map;
 let marker;
+let markerIcon;
 
 /**
  * Map layout component
@@ -10,14 +11,16 @@ let marker;
 function MapView({ addMarker }) {
   /** Extract Leaflet object */
   const { L } = window;
+  markerIcon = L.icon({
+    iconUrl: iconMarker,
+    iconSize: [, 27],
+  });
 
   useEffect(() => {
     if ((addMarker, map)) {
       const { lat, lng } = addMarker;
-      console.log(addMarker);
-      marker = L.marker([lat, lng]).addTo(map);
-      console.log(marker);
-      map.setView([lat, lng], 13);
+      marker = L.marker([lat, lng], { icon: markerIcon }).addTo(map);
+      map.flyTo([lat, lng], 15);
     }
     return () => {};
   }, [addMarker]);
